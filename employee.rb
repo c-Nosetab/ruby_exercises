@@ -26,7 +26,6 @@
 
 class Employee
   attr_reader :first_name, :last_name, :salary, :active
-
   attr_writer :active
 
   def initialize(input_options)
@@ -46,6 +45,23 @@ class Employee
 
 end
 
+class Manager < Employee
+
+  def initialize(input_options)
+    super(input_options)
+    @employees = input_options[:employees]
+  end
+
+  def send_report
+    puts "Sending email..."
+    #code to send report
+    puts "Email sent"
+  end
+
+  def
+
+end
+
 employee_1 = Employee.new(
                           first_name: "Jim",
                           last_name: "Jefferies",
@@ -60,12 +76,24 @@ employee_2 = Employee.new(
                           active: true
                           )
 
+manager = Manager.new(
+                      first_name: "Patton",
+                      last_name: "Oswalt",
+                      salary: 100000,
+                      active: true
+                      employees: [employee_1, employee_2]
+                      )
+
+
 employee_1.print_info
+employee_2.print_info
+manager.print_info
+manager.send_report
 
-puts employee_1.give_annual_raise
+# puts employee_1.give_annual_raise
 
-puts employee_2.first_name
+# puts employee_2.first_name
 
-employee_2.active = false
+# employee_2.active = false
 
-puts employee_2.active
+# puts employee_2.active
